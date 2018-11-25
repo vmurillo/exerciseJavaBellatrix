@@ -1,9 +1,9 @@
 package logger;
 
 import loggingCommon.LogginLevel;
+import loggingCommon.exception.LoggingExcetion;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,7 +26,7 @@ public class FileLevelLogger implements LevelLogger {
             logger.log(logLevel, message);
         } catch (IOException e) {
             String error = String.format("Exception when creating a file handler for {}", file);
-            throw new RuntimeException(error);
+            throw new LoggingExcetion(error);
         } finally {
             if (fileHandler != null) {
                 fileHandler.close();

@@ -1,6 +1,7 @@
 package logger;
 
 import loggingCommon.LogginLevel;
+import loggingCommon.exception.LoggingExcetion;
 
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
@@ -22,7 +23,7 @@ public class ConsoleLevelLogger implements LevelLogger {
             Level logginLevel = level.getLevel();
             logger.log(logginLevel, message);
         } catch (Exception e) {
-            throw new RuntimeException(e.getMessage());
+            throw new LoggingExcetion(e.getMessage());
         } finally {
             if (consoleHandler != null) {
                 consoleHandler.close();

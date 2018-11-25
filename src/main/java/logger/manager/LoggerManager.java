@@ -8,6 +8,7 @@ import logger.db.PropertiesParser;
 import loggingCommon.LogginLevel;
 import loggingCommon.db.DataBaseConnectionFactory;
 import loggingCommon.db.DataBaseConnectionParameters;
+import loggingCommon.exception.LoggingExcetion;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +59,7 @@ public class LoggerManager {
         loggers.forEach(logger -> {
             try {
                 logger.log(level, message);
-            } catch (RuntimeException e) {
+            } catch (LoggingExcetion e) {
                 // todo: log this exception to other loggers that are not failing
                 e.printStackTrace();
             }

@@ -2,6 +2,7 @@ package logger.manager;
 
 import logger.LevelLogger;
 import loggingCommon.LogginLevel;
+import loggingCommon.exception.LoggingExcetion;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
@@ -65,7 +66,7 @@ public class LoggerManagerTest {
         // when
         String dummyMessage = "dummyMessage";
         LogginLevel dummyLevel = LogginLevel.WARNING;
-        RuntimeException e = new RuntimeException();
+        RuntimeException e = new LoggingExcetion("");
         doThrow(e).when(dummyLogger2).log(any(), any());
         // then
         underTest.log(dummyLevel, dummyMessage);

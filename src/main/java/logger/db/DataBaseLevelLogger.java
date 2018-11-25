@@ -3,6 +3,7 @@ package logger.db;
 import logger.LevelLogger;
 import loggingCommon.LogginLevel;
 import loggingCommon.db.DataBaseConnectionFactory;
+import loggingCommon.exception.LoggingExcetion;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,7 +27,7 @@ public class DataBaseLevelLogger implements LevelLogger {
             }
         } catch (SQLException e) {
             String error = "Error when logging into a DB";
-            throw new RuntimeException(error, e.getCause());
+            throw new LoggingExcetion(error, e.getCause());
         }
     }
 }
